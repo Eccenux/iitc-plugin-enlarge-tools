@@ -2,9 +2,9 @@
 // @id             iitc-plugin-enlarge-tools@eccenux
 // @name           IITC plugin: Enlarge tools
 // @category       Misc
-// @version        0.0.2
+// @version        0.0.3
 // @namespace      https://github.com/jonatkins/ingress-intel-total-conversion
-// @description    [0.0.2] This plugin aims to give you a better experience when using desktop mode on Firefox Mobile. Why use desktop mode? Beacause you can see more portals on the same zoom! Only problem is that you might find it very hard to push buttons. This plugin is here to help ;-).
+// @description    [0.0.3] This plugin aims to give you a better experience when using desktop mode on Firefox Mobile. Why use desktop mode? Beacause you can see more portals on the same zoom! Only problem is that you might find it very hard to push buttons. This plugin is here to help ;-).
 // @include        https://*.ingress.com/intel*
 // @include        http://*.ingress.com/intel*
 // @match          https://*.ingress.com/intel*
@@ -46,11 +46,13 @@ function LOGwarn() {
  * Create CSS for given parameters.
  * 
  * @param {Number} enlargeFactor
- * @param {Number} baseDimmension
  * @returns {String} CSS rules string.
  */
-window.plugin.enlargeTools.createCssText = function(enlargeFactor, baseDimmension) {
+window.plugin.enlargeTools.createCssText = function(enlargeFactor) {
+	// leaflet bar buttons dimmensions
+	var baseDimmension = 30;	// w/h for .leaflet-touch .leaflet-bar a (I could probably get this onload later on)
 	var dimmension = Math.round(enlargeFactor * baseDimmension);
+	
 	var cssText = `
 		.leaflet-bar a,
 		.leaflet-bar a:hover {
@@ -59,9 +61,28 @@ window.plugin.enlargeTools.createCssText = function(enlargeFactor, baseDimmensio
 			line-height: ${dimmension}px !important;
 			font-size: ${enlargeFactor * 100}% !important;
 		}
+		
+		#sidebartoggle {
+			padding: ${enlargeFactor * 15}px ${enlargeFactor * 15}px !important;
+		}
+		
+		#chatcontrols {
+			height: ${enlargeFactor * 26}px;
+		}
+		#chatcontrols a {
+			height: ${enlargeFactor * 24}px;
+			line-height: ${enlargeFactor * 24}px;
+		}
+		#chatcontrols a:first-child {
+			padding-top: ${enlargeFactor * 8}px;
+		}
+		#chat.expand {
+			top: ${enlargeFactor * 25}px;
+		}
 `;
 	return cssText;
 };
+//window.plugin.enlargeTools.enlargeElements()
 
 window.plugin.enlargeTools._cssElement = null;
 
@@ -72,16 +93,15 @@ window.plugin.enlargeTools.addCssElement = function() {
 };
 
 /**
- * Enlarge leaflet bar.
+ * Enlarge leaflet bar and other important buttons.
  */
-window.plugin.enlargeTools.enlargeLeafletBar = function() {
+window.plugin.enlargeTools.enlargeElements = function() {
 	var enlargeFactor = 2;		// maybe introdcue a parameter later (and possibly use +/-)
-	var baseDimmension = 30;	// w/h for .leaflet-touch .leaflet-bar a (I could probably get this onload later on)
 
 	if (this._cssElement === null) {
 		this._cssElement = this.addCssElement();
 	}
-	var cssText = this.createCssText(enlargeFactor, baseDimmension);
+	var cssText = this.createCssText(enlargeFactor);
 	this._cssElement.innerHTML = cssText;
 };
 
@@ -102,7 +122,7 @@ window.plugin.enlargeTools.setupContent = function() {
 	// leaflet (sidebar buttons)
 	$('.leaflet-control-container .leaflet-top.leaflet-left .leaflet-control-zoom').after(`
 		<div class="leaflet-control-enlargeTools leaflet-bar leaflet-control">
-			<a href="#" onclick="plugin.enlargeTools.enlargeLeafletBar(); return false">XL</a>
+			<a href="#" onclick="plugin.enlargeTools.enlargeElements(); return false">XL</a>
 		</div>
 		<div class="leaflet-control-enlargeTools leaflet-bar leaflet-control">
 			<a href="#" onclick="plugin.enlargeTools.revertToNormalSize(); return false">N</a>
@@ -125,7 +145,7 @@ window.plugin.enlargeTools.autoSetupSize = function() {
 	var largeEdgeThreshold = 1000;
 
 	if (largeEdgeSize > largeEdgeThreshold) {
-		this.enlargeLeafletBar();
+		this.enlargeElements();
 	} else {
 		this.revertToNormalSize();
 	}
