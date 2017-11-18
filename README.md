@@ -30,4 +30,4 @@ BTW. If you didn't know -- you can install and use [Tampermonkey](https://addons
 
 Note that you need to install "desktop" IITC even on mobile FF: [iitc.me/desktop](https://iitc.me/desktop/). This is because the scripts are actually universal and they just switch from mobile to desktop mode depending on browser mode.
 
-Oh, and yes - the synchronisation with [Sync plugin](https://iitc.me/desktop/#plugin-sync) works on FF mobile :-). As you can probably see above I'm using it for [Uniques](https://iitc.me/desktop/plugin-sync#plugin-uniques).
+Oh, and yes - the synchronisation with [Sync plugin](https://iitc.me/desktop/#plugin-sync) works on FF mobile :-). As you can probably see above I'm using it for [Uniques](https://iitc.me/desktop/#plugin-uniques).
