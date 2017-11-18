@@ -2,9 +2,9 @@
 // @id             iitc-plugin-enlarge-tools@eccenux
 // @name           IITC plugin: Enlarge tools
 // @category       Misc
-// @version        0.0.1
+// @version        0.0.2
 // @namespace      https://github.com/jonatkins/ingress-intel-total-conversion
-// @description    [0.0.1] This plugin aims to give you a better experience when using desktop mode on Firefox Mobile. Why use desktop mode? Beacause you can see more portals on the same zoom! Only problem is that you might find it very hard to push buttons. This plugin is here to help ;-).
+// @description    [0.0.2] This plugin aims to give you a better experience when using desktop mode on Firefox Mobile. Why use desktop mode? Beacause you can see more portals on the same zoom! Only problem is that you might find it very hard to push buttons. This plugin is here to help ;-).
 // @include        https://*.ingress.com/intel*
 // @include        http://*.ingress.com/intel*
 // @match          https://*.ingress.com/intel*
@@ -110,8 +110,30 @@ window.plugin.enlargeTools.setupContent = function() {
 	`);
 };
 
+/**
+ * Setup size automatically.
+ */
+window.plugin.enlargeTools.autoSetupSize = function() {
+	var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+	var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+	var largeEdgeSize = Math.max(w, h);
+
+	LOG('largeEdgeSize: ', largeEdgeSize);
+	
+	// Threshold determined experimentally
+	// for MOTO G5 (which is 1080 x 1920) `largeEdgeSize` is 1394 in desktop mode and 512 in mobile mode
+	var largeEdgeThreshold = 1000;
+
+	if (largeEdgeSize > largeEdgeThreshold) {
+		this.enlargeLeafletBar();
+	} else {
+		this.revertToNormalSize();
+	}
+};
+
 var setup = function() {
-	window.plugin.enlargeTools.setupContent();
+	//window.plugin.enlargeTools.setupContent();
+	window.plugin.enlargeTools.autoSetupSize();
 };
 
 //PLUGIN END //////////////////////////////////////////////////////////
