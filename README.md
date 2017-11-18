@@ -14,7 +14,7 @@ Usage
 
 Just switch to desktop mode (in FF options menu) and the plugin will enlarge buttons for you.
 
-Below are two images from FF mobile with ITTC. First one is a standard (mobile) mode. Second one is the same phone in desktop mode (and XL buttton pressed).
+Below are two images from FF mobile with ITTC. First one is a standard (mobile) mode. Second one is the same phone in desktop mode (with this plugin installed). OK button of dialogs is also enlarged so it's easier to close them.
 
 <a target="_blank" href="https://raw.githubusercontent.com/Eccenux/iitc-plugin-enlarge-tools/master/screen-mobile.png">
 <img height="600" src="https://raw.githubusercontent.com/Eccenux/iitc-plugin-enlarge-tools/master/screen-mobile.png">
