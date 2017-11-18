@@ -19,7 +19,11 @@ Usage
 Just click on the button in the left side toolbar.
 
 This is how it would look like by default on FF mobile (with ITTC):
-<img src="https://raw.githubusercontent.com/Eccenux/iitc-plugin-enlarge-tools/master/screen-mobile.png">
+<a target="_blank" href="https://raw.githubusercontent.com/Eccenux/iitc-plugin-enlarge-tools/master/screen-mobile.png">
+<img height="600" src="https://raw.githubusercontent.com/Eccenux/iitc-plugin-enlarge-tools/master/screen-mobile.png">
+</a>
 
 This is how it looks like in desktop mode on the sam phone with XL buttons:
-<img src="https://raw.githubusercontent.com/Eccenux/iitc-plugin-enlarge-tools/master/screen-mobile.png">
+<a target="_blank" href="https://raw.githubusercontent.com/Eccenux/iitc-plugin-enlarge-tools/master/screen-mobile-desktop-xl.png">
+<img height="600" src="https://raw.githubusercontent.com/Eccenux/iitc-plugin-enlarge-tools/master/screen-mobile-desktop-xl.png">
+</a>
