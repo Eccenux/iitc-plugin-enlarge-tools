@@ -18,6 +18,8 @@ Usage
 
 Just click on the button in the left side toolbar.
 
-<!--
-<img src="https://raw.githubusercontent.com/Eccenux/iitc-plugin-enlarge-tools/master/screen.png" alt="Screen">
--->
+This is how it would look like by default on FF mobile (with ITTC):
+<img src="https://raw.githubusercontent.com/Eccenux/iitc-plugin-enlarge-tools/master/screen-mobile.png">
+
+This is how it looks like in desktop mode on the sam phone with XL buttons:
+<img src="https://raw.githubusercontent.com/Eccenux/iitc-plugin-enlarge-tools/master/screen-mobile.png">
