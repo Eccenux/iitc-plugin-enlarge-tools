@@ -2,9 +2,9 @@
 // @id             iitc-plugin-enlarge-tools@eccenux
 // @name           IITC plugin: Enlarge tools
 // @category       Misc
-// @version        0.1.1
+// @version        0.2.0
 // @namespace      https://github.com/jonatkins/ingress-intel-total-conversion
-// @description    [0.1.1] This plugin aims to give you a better experience when using desktop mode on Firefox Mobile. Why use desktop mode? Beacause you can see more portals on the same zoom! Only problem is that you might find it very hard to push buttons. This plugin is here to help ;-).
+// @description    [0.2.0] This plugin aims to give you a better experience when using desktop mode on Firefox Mobile. Why use desktop mode? Beacause you can see more portals on the same zoom! Only problem is that you might find it very hard to push buttons. This plugin is here to help ;-).
 // @include        https://*.ingress.com/intel*
 // @include        http://*.ingress.com/intel*
 // @match          https://*.ingress.com/intel*
@@ -114,6 +114,16 @@ window.plugin.enlargeTools.enlargeElements = function() {
 	}
 	var cssText = this.createCssText(enlargeFactor);
 	this._cssElement.innerHTML = cssText;
+
+	//
+	// Also enlarge portals
+	// note L7 portal in standard, mobile mode is 5 mm (at least on moto g5 plus)
+	// however L7 portal in desktop mode with x2 enlarageFactor is 3,5 mm. So still smaller
+	window.portalMarkerScale = function() {
+		var zoom = map.getZoom();
+		// factors on the right copied from original `portalMarkerScale` function
+		return enlargeFactor * (zoom >= 16 ? 1.5 : zoom >= 14 ? 1.2 : zoom >= 11 ? 1.0 : zoom >= 8 ? 0.65 : 0.5);
+	}
 };
 
 /**
