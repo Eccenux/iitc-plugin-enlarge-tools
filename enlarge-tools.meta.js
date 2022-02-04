@@ -2,9 +2,9 @@
 // @id             iitc-plugin-enlarge-tools@eccenux
 // @name           IITC plugin: Enlarge tools
 // @category       Misc
-// @version        0.2.0
+// @version        0.2.1
 // @namespace      https://github.com/jonatkins/ingress-intel-total-conversion
-// @description    [0.2.0] This plugin aims to give you a better experience when using desktop mode on Firefox Mobile. Why use desktop mode? Beacause you can see more portals on the same zoom! Only problem is that you might find it very hard to push buttons. This plugin is here to help ;-).
+// @description    [0.2.1] This plugin aims to give you a better experience when using desktop mode on Firefox Mobile. Why use desktop mode? Beacause you can see more portals on the same zoom! Only problem is that you might find it very hard to push buttons. This plugin is here to help ;-).
 // @include        https://*.ingress.com/intel*
 // @include        http://*.ingress.com/intel*
 // @match          https://*.ingress.com/intel*
@@ -13,5 +13,6 @@
 // @include        http://*.ingress.com/mission/*
 // @match          https://*.ingress.com/mission/*
 // @match          http://*.ingress.com/mission/*
+// @match          https://intel.ingress.com/*
 // @grant          none
 // ==/UserScript==
